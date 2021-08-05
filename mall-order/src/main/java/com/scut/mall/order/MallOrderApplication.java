@@ -1,8 +1,10 @@
 package com.scut.mall.order;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@MapperScan("com.scut.mall.order.dao")
 @SpringBootApplication
 public class MallOrderApplication {
 
