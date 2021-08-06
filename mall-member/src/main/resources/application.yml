@@ -5,6 +5,13 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://39.108.59.159:3306/mall_ums?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
 
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 39.108.59.159:8848
+  application:
+    name: mall-member
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
