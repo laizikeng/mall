@@ -1,7 +1,11 @@
 package com.scut.mall.product.service.impl;
 
+import com.scut.mall.product.service.CategoryBrandRelationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,10 +19,14 @@ import com.scut.common.utils.Query;
 import com.scut.mall.product.dao.CategoryDao;
 import com.scut.mall.product.entity.CategoryEntity;
 import com.scut.mall.product.service.CategoryService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
+
+    @Autowired
+    CategoryBrandRelationService categoryBrandRelationService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -67,6 +75,31 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         // TODO 1、检查当前删除的菜单是否被别的地方引用
         // 逻辑删除
         baseMapper.deleteBatchIds(asList);
+    }
+
+    @Override
+    public Long[] findCatelogPath(Long catelogId) {
+        ArrayList<Long> paths = new ArrayList<>();
+        CategoryEntity byId = null;
+
+        do {
+            paths.add(catelogId);
+            byId = this.getById(catelogId);
+        } while ((catelogId = byId.getParentCid())!=0);
+
+        Collections.reverse(paths);
+
+        return paths.toArray(new Long[paths.size()]);
+    }
+
+    /**
+     * 级联更新所有关联的数据
+     */
+    @Override
+    @Transactional
+    public void updateCascade(CategoryEntity category) {
+        this.updateById(category);
+        categoryBrandRelationService.updateCategory(category.getCatId(),category.getName());
     }
 
 }
