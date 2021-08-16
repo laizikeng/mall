@@ -1,5 +1,6 @@
 package com.scut.mall.ware.service.impl;
 
+import com.scut.common.to.es.SkuHasStockVo;
 import com.scut.common.utils.R;
 import com.scut.mall.ware.feign.ProductFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -80,6 +83,19 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
             wareSkuDao.addStock(skuId, wareId, skuNum);
         }
         return price;
+    }
+
+    @Override
+    public List<SkuHasStockVo> getSkuHasStock(List<Long> skuIds) {
+        return skuIds.stream().map(id -> {
+            SkuHasStockVo stockVo = new SkuHasStockVo();
+
+            // 查询当前sku的总库存量
+            stockVo.setSkuId(id);
+            // 这里库存可能为null 要避免空指针异常
+            stockVo.setHasStock(baseMapper.getSkuStock(id)==null?false:true);
+            return stockVo;
+        }).collect(Collectors.toList());
     }
 
 }

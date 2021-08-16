@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 39.108.59.159:8848
+  application:
+    name: mall-search
+server:
+  port: 12000
+ipAddr: 39.108.59.159
