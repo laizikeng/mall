@@ -580,11 +580,11 @@
 <script type="text/javascript">
   function search() {
       var keyword=$("#searchText").val()
-      window.location.href="http://search.glmall.com/list.html?keyword="+keyword;
+      window.location.href="http://search.mall.com/list.html?keyword="+keyword;
   }
 
   function to_href(skuId){
-      location.href = "http://item.glmall.com/" + skuId + ".html";
+      location.href = "http://item.mall.com/" + skuId + ".html";
   }
   $.get("http://seckill.glmall.com/currentSeckillSkus",function (resp) {
       if(resp.data.length > 0){

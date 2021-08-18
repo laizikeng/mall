@@ -1,68 +1,58 @@
-PUT product
+PUT mall_product
 {
   "mappings": {
     "properties": {
-      "skuId":{
+      "skuId": {
         "type": "long"
       },
-      "spuId":{
-        "type": "keyword"
+      "spuId": {
+        "type": "long"
       },
-      "skuTitle":{
+      "skuTitle": {
         "type": "text",
         "analyzer": "ik_smart"
       },
-      "skuPrice":{
+      "skuPrice": {
         "type": "keyword"
       },
-      "skuImg":{
-        "type": "keyword",
-        "index": false,
-        "doc_values": false
+      "skuImg": {
+        "type": "keyword"
       },
-      "saleCount":{
+      "saleCount": {
         "type": "long"
       },
-      "hasStock":{
+      "hosStock": {
         "type": "boolean"
       },
-      "hotScore":{
+      "hotScore": {
         "type": "long"
       },
-      "brandId":{
+      "brandId": {
         "type": "long"
       },
-      "catalogId":{
+      "catelogId": {
         "type": "long"
       },
-      "brandName":{
-        "type":"keyword",
-        "index": false,
-        "doc_values": false
+      "brandName": {
+        "type": "keyword"
       },
-      "brandImg":{
-        "type": "keyword",
-        "index": false,
-        "doc_values": false
+      "brandImg": {
+        "type": "keyword"
       },
-      "catalogName":{
-        "type": "keyword",
-        "index": false,
-        "doc_values": false
+      "catalogName": {
+        "type": "keyword"
       },
-      "attrs":{
+      "attrs": {
         "type": "nested",
         "properties": {
-          "attrId":{
-            "type":"long"
+          "attrId": {
+            "type": "long"
           },
-          "attrName":{
-            "type":"keyword",
-            "index":false,
-            "doc_values": false
+          "attrName": {
+            "type": "keyword"
           },
-          "attrValue":{
-            "type":"keyword"
+          "attrValue": {
+            "type": "keyword"
           }
         }
       }

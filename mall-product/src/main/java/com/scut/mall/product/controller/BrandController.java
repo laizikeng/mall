@@ -1,6 +1,7 @@
 package com.scut.mall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import com.scut.common.valid.AddGroup;
@@ -54,6 +55,13 @@ public class BrandController {
         return R.ok().put("brand", brand);
     }
 
+    @RequestMapping("/infos")
+    public R brandInfo(@PathVariable("brandIds") List<Long> brandIds){
+        List<BrandEntity> brand = brandService.getBrandsByIds(brandIds);
+
+        return R.ok().put("brand", brand);
+    }
+
     /**
      * 保存
      */
@@ -90,5 +98,4 @@ public class BrandController {
 
         return R.ok();
     }
-
 }

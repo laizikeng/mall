@@ -4,6 +4,8 @@ spring:
     password: root
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://39.108.59.159:3306/mall_pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    hikari:
+      max-lifetime: 120000
 
   cloud:
     nacos:
@@ -29,7 +31,6 @@ spring:
       time-to-live: 3600000
       # 是否缓存空值,防止缓存穿透
       cache-null-values: true
-
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
