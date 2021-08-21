@@ -277,7 +277,6 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             }else {
                 esModel.setHasStock(finalStockMap.get(sku.getSkuId()));
             }
-            // TODO 1.热度评分 0
             esModel.setHotScore(0L);
 
             BrandEntity brandEntity = brandService.getById(esModel.getBrandId());

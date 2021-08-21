@@ -6,6 +6,8 @@ spring:
     url: jdbc:mysql://39.108.59.159:3306/mall_pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     hikari:
       max-lifetime: 120000
+  session:
+    store-type: redis
 
   cloud:
     nacos:
@@ -39,6 +41,12 @@ mybatis-plus:
 #      配置全局的逻辑删除规则
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+mall:
+  thread:
+    core-size: 20
+    max-size: 200
+    keep-alive-time: 10
 
 server:
   port: 10000

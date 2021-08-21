@@ -21,7 +21,13 @@ package com.scut.common.exception;
 public enum BizCodeEnum {
     UNKNOW_EXCEPTION(10000,"系统未知异常"),
     VALID_EXCEPTION(10001,"参数格式校验失败"),
-    PRODUCT_UP_EXCEPTION(11000,"商品上架异常");
+    SMS_CODE_EXCEPTION(10002, "验证码获取频率太高,稍后再试"),
+    SMS_SEND_CODE_EXCEPTION(10403, "短信发送失败"),
+    PRODUCT_UP_EXCEPTION(11000,"商品上架异常"),
+    USER_EXIST_EXCEPTION(15001, "用户已经存在"),
+    PHONE_EXIST_EXCEPTION(15002, "手机号已经存在"),
+    LOGINACTT_PASSWORD_ERROR(15003, "账号或密码错误"),
+    SOCIALUSER_LOGIN_ERROR(15004, "社交账号登录失败");
 
     private int code;
     private String msg;

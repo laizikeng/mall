@@ -1,8 +1,10 @@
 package com.scut.mall.product;
 
+import com.scut.mall.product.dao.AttrGroupDao;
 import com.scut.mall.product.entity.BrandEntity;
 import com.scut.mall.product.service.BrandService;
 import com.scut.mall.product.service.CategoryService;
+import com.scut.mall.product.vo.SpuItemAttrGroup;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -24,10 +26,13 @@ class MallProductApplicationTests {
     @Autowired
     CategoryService categoryService;
 
+    @Autowired
+    AttrGroupDao attrGroupDao;
+
     @Test
     void contextLoads() {
-        List<BrandEntity> list = brandService.list();
-        System.out.println(list);
+        List<SpuItemAttrGroup> attrGroupWithAttrsBySpuId = attrGroupDao.getAttrGroupWithAttrsBySpuId(3L, 225L);
+        System.out.println(attrGroupWithAttrsBySpuId);
     }
 
     @Test

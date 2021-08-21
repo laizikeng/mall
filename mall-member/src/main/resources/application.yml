@@ -4,7 +4,11 @@ spring:
     password: root
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://39.108.59.159:3306/mall_ums?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-
+    hikari:
+      max-lifetime: 120000
+  redis:
+    host: 39.108.59.159
+    port: 6379
   cloud:
     nacos:
       discovery:
